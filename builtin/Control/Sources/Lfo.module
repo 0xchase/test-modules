@@ -1,0 +1,35 @@
+processor Lfo [[ main, width: 3, height: 2, title: "LFO", titleColor: "red" ]]
+{
+    input value float32 waveformKnob [[
+        widget: "knob",
+        left: 30,
+        top: 40,
+        color: "red",
+        // min: 0.0,
+        // max: 1.0,
+        default: 0.5
+    ]];
+
+    input value float32 rateKnob [[
+        widget: "knob",
+        left: 110,
+        top: 40,
+        color: "red",
+        // height: 100,
+        // min: 0.01,
+        // max: 100.0,
+        default: 0.5
+    ]];
+
+    input value float32 waveform [[ pinTop: 5 ]];
+    input value float32 rate [[ pinTop: 5 + 25 ]];
+    output value float32 out [[ pinTop: 5 ]];
+
+    void main()
+    {
+        loop {
+            // out <- waveform - rate;
+            advance();
+        }
+    }
+}

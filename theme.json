@@ -1,0 +1,10 @@
+{
+    "background": "#ffffff",
+    "foreground": "#000000",
+    "endpoint": [
+        {"kind": "stream",      "type": null,           "shape": "circle",      "color": "blue"     },
+        {"kind": "event",       "type": null,           "shape": "triangle",    "color": "green"    },
+        {"kind": "event",       "type": "primitive",    "shape": "triangle",    "color": "red"      },
+        {"kind": "value",       "type": null,           "shape": "square",      "color": "red"      }
+    ]
+}

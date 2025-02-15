@@ -1,0 +1,43 @@
+/**
+    A simple synth using sine oscillators, showing use of the voice allocator,
+    message converter and envelopes
+*/
+
+// Determine the note frequency from the pitch (midi note)
+processor Noise [[ main, width: 1, height: 1, icon: "icons/noise.svg", iconSize: 24, iconColor: "blue" ]]
+{
+    input value float32 frequency [[
+        pinTop: 5
+    ]];
+
+    output stream float32 out [[
+        pinTop: 5
+    ]];
+
+    // Constants
+    const float32 PI = 3.14159265358979323846f;
+    const float32 TWO_PI = 2.0f * PI;
+    const float32 SAMPLE_RATE = 44100.0f;
+
+    // State variables
+    float32 phase = 0.0;
+
+    void main()
+    {
+        loop {
+            // Generate sine wave
+            float32 sample = sin(TWO_PI * phase);
+
+            // Output the sample
+            out <- sample;
+
+            // Increment phase
+            phase = phase + (frequency / SAMPLE_RATE);
+            if (phase >= 1.0) {
+                phase = phase - 1.0f;
+            }
+
+            advance();
+        }
+    }
+}

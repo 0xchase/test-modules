@@ -1,0 +1,18 @@
+processor Square [[ main, width: 1, height: 1, icon: "icons/square.svg", iconColor: "blue" ]]
+{
+    input value float32 freq [[ pinTop: 5 ]];
+    output stream float32 out [[ pinTop: 5 ]];
+
+    std::oscillators::PolyblepState polyblep;
+
+    void main()
+    {
+        loop {
+            polyblep.setFrequency(processor.frequency, freq);
+
+            out <- polyblep.nextSquare();
+
+            advance();
+        }
+    }
+}

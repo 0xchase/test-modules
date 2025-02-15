@@ -1,0 +1,24 @@
+/**
+    A simple synth using sine oscillators, showing use of the voice allocator,
+    message converter and envelopes
+*/
+
+// Determine the note frequency from the pitch (midi note)
+processor Scope [[ main, width: 5, height: 3, title: "Scope", titleColor: "red" ]]
+{
+    input value float32 in [[ pinTop: 5 ]];
+
+    output value float32 scopeValue [[
+        widget: "scope",
+        left: 10,
+        top: 40
+    ]];
+
+    void main()
+    {
+        loop {
+            scopeValue <- in;
+            advance();
+        }
+    }
+}

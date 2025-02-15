@@ -1,0 +1,29 @@
+processor Gain [[ main, width: 2, height: 2, title: "Gain", titleColor: "blue" ]]
+{
+    input stream float32<2> in [[ pinTop: 5 ]];
+    input value float32 gain [[ pinTop: 45 ]];
+    output stream float32<2> out [[ pinTop: 5 ]];
+
+    input value float32 knobValue [[
+        widget: "knob",
+        left: 40,
+        top: 40,
+        default: 0.5,
+        color: "blue"
+    ]];
+
+    const float32 dbMin = -60.0f;
+    const float32 dbMax = 12.0f;
+
+    void main()
+    {
+        loop {
+            float32 dbValue = dbMin + (dbMax - dbMin) * knobValue;
+            float32 gain = pow(10.0f, dbValue / 20.0f);
+
+            out <- (in[0] * gain, in[1] * gain);
+
+            advance();
+        }
+    }
+}

@@ -1,0 +1,18 @@
+/**
+    A simple synth using sine oscillators, showing use of the voice allocator,
+    message converter and envelopes
+*/
+
+// Determine the note frequency from the pitch (midi note)
+processor Button [[ main, iconColor: "red" ]]
+{
+    output event bool c [[ pinTop: 5 ]];
+
+    void main()
+    {
+        loop {
+            // c <- a && b;
+            advance();
+        }
+    }
+}

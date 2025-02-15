@@ -1,0 +1,19 @@
+/**
+    A simple synth using sine oscillators, showing use of the voice allocator,
+    message converter and envelopes
+*/
+
+// Determine the note frequency from the pitch (midi note)
+processor Tempo [[ main, icon: "icons/clock.svg", iconSize: 24, iconColor: "purple" ]]
+{
+    // input value float32 bpm [[ pinTop: 5 ]];
+    output value std::time::Time c [[ pinTop: 5 ]];
+
+    void main()
+    {
+        loop {
+            // c <- a + b;
+            advance();
+        }
+    }
+}

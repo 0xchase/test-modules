@@ -1,0 +1,31 @@
+processor Value [[ main, width: 1, height: 1, titleColor: "red" ]]
+{
+    input event float32 textChange [[
+        widget: "textbox",
+        left: 5,
+        top: 30,
+        width: 55,
+        height: 30,
+        default: 0.5,
+        color: "red"
+    ]];
+
+    output value float32 out [[
+        pinTop: 5
+    ]];
+
+    event textChange(float32 v)
+    {
+        value = v;
+    }
+
+    float32 value = 0.0f;
+
+    void main()
+    {
+        loop {
+            out <- value;
+            advance();
+        }
+    }
+}

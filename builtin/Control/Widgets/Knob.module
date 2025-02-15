@@ -1,0 +1,25 @@
+// Output the control value set by the knob
+processor Knob [[ main, width: 1, height: 1 ]]
+{
+    input value float32 knob [[
+        widget: "knob",
+        left: 5,
+        top: 10,
+        width: 40,
+        height: 40,
+        default: 0.5,
+        color: "red"
+    ]];
+
+    output value float32 out [[
+        pinTop: 5
+    ]];
+
+    void main()
+    {
+        loop {
+            out <- knob;
+            advance();
+        }
+    }
+}

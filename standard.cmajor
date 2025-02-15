@@ -1,0 +1,7 @@
+namespace std::time {
+    struct Time
+    {
+        float32 start;
+        float32 end;
+    }
+}

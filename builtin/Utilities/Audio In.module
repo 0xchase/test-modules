@@ -1,0 +1,23 @@
+/**
+    A simple synth using sine oscillators, showing use of the voice allocator,
+    message converter and envelopes
+*/
+
+// Write the input data to the application output
+processor Input [[ main, width: 1, height: 1, icon: "icons/mic.svg", iconSize: 24, iconColor: "blue" ]]
+{
+    // input stream float32 in_l [[ pinTop: 10 ]];
+    // input stream float32 in_r [[ pinTop: 10 + 25 ]];
+    // output stream float32 out_l [[ pinTop: 10, external: 0 ]];
+    // output stream float32 out_r [[ pinTop: 10 + 25, external: 1 ]];
+
+    output stream float32<2> out_1 [[ pinTop: 5 ]];
+
+    void main()
+    {
+        loop {
+            // out <- in;
+            advance();
+        }
+    }
+}

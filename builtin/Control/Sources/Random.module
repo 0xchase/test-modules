@@ -1,0 +1,25 @@
+/**
+    A simple synth using sine oscillators, showing use of the voice allocator,
+    message converter and envelopes
+*/
+
+// Determine the note frequency from the pitch (midi note)
+processor Rand [[ main, icon: "icons/rand.svg", iconSize: 24, iconColor: "red" ]]
+{
+    output value float32 a [[ pinTop: 5 ]];
+
+    std::random::RNG rng;
+
+    void init()
+    {
+        rng.seed(301L + processor.id);
+    }
+
+    void main()
+    {
+        loop {
+            a <- rng.getFloat(1.0f);
+            advance();
+        }
+    }
+}
